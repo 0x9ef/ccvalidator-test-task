@@ -15,3 +15,7 @@ curl -X POST http://localhost:8080/api/v1/validate -d '{"cn": "4860908239042", "
 curl -X POST http://localhost:8080/api/v1/validate -d '{"cn": "invalid", "expm": 12, "expy": 2026}' &&
 curl -X POST http://localhost:8080/api/v1/validate -d '{"cn": "4860908239042", "expm": 13, "expy": 2026}' &&
 ```
+
+### Allow using test card numbers
+If you want to allow validating card numbers like [Stripe has](https://stripe.com/docs/testing):
+change `VALIDATE_ALLOW_TEST_CARDS` env to false
