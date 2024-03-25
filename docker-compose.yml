@@ -1,0 +1,21 @@
+version: "3.1"
+
+services:
+  http:
+    container_name: "http-ccvalidator"
+    build:
+      context: "."
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      LOG_LEVEL: info
+      HTTP_PORT: "8080"
+      VALIDATE_ALLOW_TEST_CARDS: true
+    healthcheck:
+      test: curl -X GET http://localhost:8080/api/v1/ping  
+      interval: 2s
+      timeout: 10s
+      retries: 10
+      start_period: 30s
+    restart: "always"
